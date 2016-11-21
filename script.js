@@ -84,7 +84,7 @@ console.log(obj);
 //------------------------------------------------------------------------------
 const transform = function (values, predicate, mutator) {
   // if the predicate is true, mutate the value, otherwise don't mutate it
-  if(predicate) { mutator(values);}
+  if(predicate) { mutator(values); }
 };
 
 transform([11,2,3,4,5],true,arrayTimes2);
@@ -100,4 +100,37 @@ const createArray = function createArray() {
 };
 
 let testCreateArray = createArray(2,4,6,8,10);
+//------------------------------------------------------------------------------
+
+const arrayTransform = function arrayTransform(array, predicate, mutator) {
+  // if the predicate is true, mutate the value, otherwise don't mutate it
+  if(predicate)  { mutator(array); }
+};
+
+let testArrayTransform = arrayTransform([1,2,3,4,5],true,arrayTimes2);
+//------------------------------------------------------------------------------
+
+const createPerson = function createPerson(givenName, surname, bornOn, height, weight, eyeColor) {
+
+   let obj = {};
+   obj.givenName = givenName;
+   obj.surname = surname;
+   obj.bornOn = bornOn;
+   obj.height = height;
+   obj.weight = weight;
+   obj.eyeColor = eyeColor;
+   return obj;
+};
+
+let testCreatePerson = createPerson("David", "Mozzoni", "8-21-76", "5-9", 140, "blue" );
+//------------------------------------------------------------------------------
+
+const memoFactory = function (rememberMe) {
+  let memo = rememberMe;
+
+  return function () {
+    return memo;
+  };
+};
+
 //------------------------------------------------------------------------------
